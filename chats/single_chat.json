@@ -1,0 +1,19 @@
+{
+  "id" : "single_chat",
+  "messages" : [ {
+    "content" : "sample first message",
+    "role" : "user"
+  }, {
+    "content" : "added trigger",
+    "role" : "user"
+  }, {
+    "content" : "new",
+    "role" : "user"
+  }, {
+    "content" : "",
+    "role" : "user"
+  }, {
+    "content" : "send_message",
+    "role" : "user"
+  } ]
+}

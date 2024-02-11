@@ -1,0 +1,8 @@
+<div
+  class="rounded-2xl p-4 ml-7 mb-4 bg-gray-100"
+  th:text="${message}"
+  hx:get="@{/agent/message?id={id}(id=${id})}"
+  hx-trigger="load"
+  hx-target="#messages"
+  hx-swap="beforeend">
+</div>

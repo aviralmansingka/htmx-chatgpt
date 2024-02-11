@@ -4,24 +4,31 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
     <title>ChatHTMX</title>
     <script src="https://unpkg.com/htmx.org@1.9.2"></script>
-    <link th:href=@{style.css} rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <nav>
-      <button
-        hx-post="/chat"
-        hx-target="#chats"
-        hx-swap="afterbegin"
-        >+ New Chat</button>
-      <div id="chats">
-
+  <body class="flex h-screen size-full m-0 p-0 font-sans">
+    <main class="flex flex-1 flex-col size-full p-5 box-border bg-slate-500">
+      <div
+        id="messages"
+        class="flex-1">
+        <th.block th:each="message : ${messages}">
+          <div
+            class="rounded-2xl p-4 mb-4"
+            th:classappend='${message.role == "user" ? "bg-gray-100" : "bg-green-100"}'
+            th:text=${message.content}>
+          </div>
+        </th.block>
       </div>
-    </nav>
-    <main>
-      
+      <form
+        class="flex h-12"
+        hx-post="/user/message"
+        hx-target="#messages"
+        hx-swap="beforeend">
+        <input type="text" name="message" class="rounded-xl p-3 box-border mr-3 flex-1 border-slate-50">
+        <button class="w-24 rounded-xl bg-green-500 text-white">Send</button>
+      </form>
     </main>
   </body>
 </html>
